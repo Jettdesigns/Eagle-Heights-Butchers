@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eagle Heights Butchery — Old Eagle Heights, Tamborine Mountain</title>
+<meta name="description" content="Eagle Heights Butchery: house-smoked hams and bacon, hand-made sausages and fresh seafood, cut to order in Old Eagle Heights on Tamborine Mountain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Libre+Franklin:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1E2A20;
+    --forest-2:#28371F;
+    --cream:#F3E9D3;
+    --cream-2:#EADFC4;
+    --oak:#5B3A28;
+    --oxblood:#8B3123;
+    --oxblood-dark:#6E2519;
+    --brass:#C4922E;
+    --ink:#221B12;
+    --line: rgba(34,27,18,0.14);
+    --shadow: 0 14px 34px rgba(30,42,32,0.16);
+    --radius: 4px;
+    --maxw: 1140px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Libre Franklin', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    margin:0 0 .4em 0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--forest);
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.72rem;
+    font-weight:700;
+    color:var(--oxblood);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  p{margin:0 0 1em 0;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5em;
+    font-family:'Space Mono', monospace;
+    font-size:.82rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:.9em 1.5em;
+    border-radius:2px;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(0);}
+  .btn-primary{background:var(--oxblood); color:var(--cream); box-shadow:var(--shadow);}
+  .btn-primary:hover{background:var(--oxblood-dark);}
+  .btn-ghost{background:transparent; color:var(--cream); border-color:rgba(243,233,211,0.45);}
+  .btn-ghost:hover{border-color:var(--cream); background:rgba(243,233,211,0.08);}
+  .btn-outline{background:transparent; color:var(--forest); border-color:var(--forest);}
+  .btn-outline:hover{background:var(--forest); color:var(--cream);}
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40;
+    background:rgba(30,42,32,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(243,233,211,0.14);
+  }
+  .nav{
+    max-width:var(--maxw); margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none; color:var(--cream);
+  }
+  .brand svg{width:34px; height:34px; flex:none;}
+  .brand-text{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; line-height:1.1;}
+  .brand-text span{display:block; font-family:'Space Mono', monospace; font-size:.62rem; letter-spacing:.16em; font-weight:400; color:var(--brass); text-transform:uppercase; margin-top:3px;}
+  nav.links{display:flex; gap:26px; font-family:'Space Mono', monospace; font-size:.78rem; text-transform:uppercase; letter-spacing:.06em;}
+  nav.links a{color:var(--cream-2); text-decoration:none; opacity:.85; padding:4px 0; border-bottom:1px solid transparent;}
+  nav.links a:hover{opacity:1; border-color:var(--brass);}
+  .nav-actions{display:flex; align-items:center; gap:12px;}
+  @media (max-width:760px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 82% -10%, rgba(196,146,46,0.16), transparent 60%),
+      linear-gradient(180deg, var(--forest) 0%, var(--forest-2) 100%);
+    color:var(--cream);
+    overflow:hidden;
+    padding:88px 0 0 0;
+  }
+  .hero-grid{
+    max-width:var(--maxw); margin:0 auto; padding:0 28px 70px;
+    display:grid; grid-template-columns:1.25fr .9fr; gap:48px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr; gap:40px; padding-bottom:50px;} }
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+    line-height:1.04;
+    margin:.4em 0 .38em;
+  }
+  .hero h1 em{font-style:italic; color:var(--brass); font-weight:500;}
+  .hero p.lead{
+    color:var(--cream-2); font-size:1.08rem; max-width:44ch; margin-bottom:1.8em;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px;}
+  .hero-meta{
+    margin-top:2.6em; display:flex; gap:28px; flex-wrap:wrap;
+    font-family:'Space Mono', monospace; font-size:.76rem; color:var(--cream-2); letter-spacing:.03em;
+  }
+  .hero-meta div{display:flex; align-items:center; gap:8px;}
+  .hero-meta svg{width:15px; height:15px; opacity:.8; flex:none;}
+
+  /* stamp badge */
+  .stamp-wrap{display:flex; justify-content:center;}
+  .stamp{width:min(320px, 76vw); height:auto; filter:drop-shadow(0 12px 26px rgba(0,0,0,0.35));}
+
+  /* ridge divider */
+  .ridge{display:block; width:100%; height:auto; margin-bottom:-2px;}
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{
+    background:var(--cream);
+    padding:66px 0 60px;
+  }
+  .intro-grid{
+    display:grid; grid-template-columns:.7fr 1.3fr; gap:52px; align-items:start;
+  }
+  @media (max-width:760px){ .intro-grid{grid-template-columns:1fr; gap:22px;} }
+  .intro h2{font-size:clamp(1.6rem,3vw,2.15rem); max-width:14ch;}
+  .intro .body-col p{font-size:1.03rem; color:#3a3226; max-width:62ch;}
+  .intro .body-col p:first-child{font-size:1.14rem; color:var(--ink);}
+
+  /* ---------- PRODUCTS ---------- */
+  .products{background:var(--cream-2); padding:70px 0 76px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{max-width:56ch; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem); margin-top:.35em;}
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  @media (max-width:940px){ .grid-4{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .grid-4{grid-template-columns:1fr;} }
+  .card{
+    background:var(--cream); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px 24px 26px; position:relative; overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+  .card svg{width:40px; height:40px; color:var(--oxblood); margin-bottom:18px;}
+  .card h3{font-size:1.12rem; margin-bottom:.35em;}
+  .card p{font-size:.92rem; color:#4a4235; margin-bottom:0;}
+  .card .tag{
+    position:absolute; top:18px; right:18px; font-family:'Space Mono',monospace;
+    font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--brass); font-weight:700;
+  }
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    background:var(--forest); color:var(--cream); padding:64px 0; text-align:center;
+    position:relative;
+  }
+  .callout .eyebrow{color:var(--brass);}
+  .callout h2{
+    color:var(--cream); font-weight:500; font-style:italic;
+    font-size:clamp(1.5rem,3.4vw,2.3rem); max-width:26ch; margin:.5em auto .3em;
+  }
+  .callout p.by{font-family:'Space Mono',monospace; font-size:.78rem; letter-spacing:.05em; color:var(--cream-2); text-transform:uppercase;}
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--cream); padding:74px 0 78px;}
+  .review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:940px){ .review-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:620px){ .review-grid{grid-template-columns:1fr;} }
+  .ticket{
+    background:var(--cream-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 22px 20px;
+    position:relative;
+  }
+  .ticket:before, .ticket:after{
+    content:""; position:absolute; width:16px; height:16px; background:var(--cream);
+    border-radius:50%; top:50%; transform:translateY(-50%);
+  }
+  .ticket:before{left:-9px;} .ticket:after{right:-9px;}
+  .ticket .stars{color:var(--brass); font-size:.8rem; letter-spacing:2px; margin-bottom:10px;}
+  .ticket p.quote{font-size:.96rem; color:var(--ink); margin-bottom:14px;}
+  .ticket .who{font-family:'Space Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--oak); display:flex; justify-content:space-between;}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--forest-2); color:var(--cream); padding:74px 0 70px;}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:52px;}
+  @media (max-width:820px){ .visit-grid{grid-template-columns:1fr; gap:38px;} }
+  .visit h2{color:var(--cream);}
+  .hours-table{width:100%; border-collapse:collapse; font-family:'Space Mono',monospace; font-size:.88rem; margin-top:18px;}
+  .hours-table td{padding:10px 0; border-bottom:1px dashed rgba(243,233,211,0.22);}
+  .hours-table td:last-child{text-align:right; color:var(--brass);}
+  .info-list{list-style:none; padding:0; margin:18px 0 0; display:flex; flex-direction:column; gap:16px;}
+  .info-list li{display:flex; gap:14px; align-items:flex-start;}
+  .info-list svg{width:20px; height:20px; flex:none; margin-top:2px; color:var(--brass);}
+  .info-list .lbl{font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cream-2); opacity:.75; margin-bottom:2px; display:block;}
+  .info-list .val{font-size:1rem;}
+  .info-list a{text-decoration:none; border-bottom:1px solid rgba(243,233,211,0.4);}
+  .info-list a:hover{border-color:var(--brass); color:var(--brass);}
+  .note-box{
+    margin-top:26px; padding:16px 18px; border:1px solid rgba(243,233,211,0.22); border-radius:var(--radius);
+    font-size:.88rem; color:var(--cream-2);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--forest); color:var(--cream-2); padding:34px 0; font-size:.82rem;}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  .foot-grid .brand-text{color:var(--cream);}
+  footer .fine{font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.03em; color:rgba(234,223,196,0.55);}
+
+  /* ---------- EDIT MODE ---------- */
+  #editToggle{
+    position:fixed; right:22px; top:50%; transform:translateY(-50%); z-index:60;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    background:var(--oxblood); color:var(--cream); border:none;
+    padding:14px 10px; border-radius:30px; cursor:pointer;
+    box-shadow:0 10px 24px rgba(0,0,0,0.28);
+    font-family:'Space Mono',monospace; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase;
+    writing-mode:vertical-rl; text-orientation:mixed;
+    transition:background .2s ease, transform .2s ease;
+  }
+  #editToggle:hover{background:var(--oxblood-dark); transform:translateY(-50%) scale(1.04);}
+  #editToggle.active{background:var(--brass); color:var(--ink);}
+  #editToggle svg{writing-mode:horizontal-tb; width:16px; height:16px;}
+  body.editing [data-editable]{
+    outline:1.5px dashed rgba(139,49,35,0.55);
+    outline-offset:3px;
+    border-radius:2px;
+    cursor:text;
+  }
+  body.editing [data-editable]:hover{outline-color:var(--oxblood); background:rgba(196,146,46,0.08);}
+  body.editing [data-editable]:focus{outline:1.5px solid var(--oxblood); background:rgba(196,146,46,0.12);}
+  #editBanner{
+    position:fixed; left:50%; bottom:22px; transform:translateX(-50%) translateY(140%);
+    background:var(--ink); color:var(--cream); padding:12px 20px; border-radius:30px;
+    font-family:'Space Mono',monospace; font-size:.74rem; letter-spacing:.03em;
+    box-shadow:0 10px 24px rgba(0,0,0,0.3); z-index:61; transition:transform .25s ease;
+    display:flex; align-items:center; gap:12px;
+  }
+  #editBanner.show{transform:translateX(-50%) translateY(0);}
+  #editBanner button{
+    background:var(--brass); color:var(--ink); border:none; padding:6px 12px; border-radius:20px;
+    font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; cursor:pointer;
+  }
+  @media (max-width:600px){
+    #editToggle{right:10px; padding:12px 8px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" stroke="#C4922E" stroke-width="1.4"/>
+        <circle cx="24" cy="24" r="18.5" stroke="#C4922E" stroke-width="1"/>
+        <path d="M15 27c1-6 4-10 9-10s8 4 9 10" stroke="#F3E9D3" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M13 29h22" stroke="#F3E9D3" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">Eagle Heights Butchery<span>Old Eagle Heights · Est. Mountain Trade</span></span>
+    </a>
+    <nav class="links">
+      <a href="#smokehouse">Smokehouse</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-primary" href="tel:0755451811">Call Shop</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow" data-editable>Eagle Heights · Tamborine Mountain, QLD</p>
+      <h1 data-editable>Real meat, smoked and made <em>the old way</em>, up the mountain.</h1>
+      <p class="lead" data-editable>A small, independent butcher in the heart of Old Eagle Heights — house-smoked hams and bacon, hand-made sausages, and fresh seafood, cut to order by people who know your name.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:0755451811">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          (07) 5545 1811
+        </a>
+        <a class="btn btn-ghost" href="#visit">Get Directions</a>
+      </div>
+      <div class="hero-meta">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-editable>Mon–Fri 7am–5:30pm · Sat 7am–1pm</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-editable>Shop 5/17 Southport Ave, Eagle Heights</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h2m16 0h2M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>
+          <span data-editable>Trading up the mountain for 26 years</span>
+        </div>
+      </div>
+    </div>
+    <div class="stamp-wrap">
+      <svg class="stamp" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Eagle Heights Butchery stamp">
+        <circle cx="150" cy="150" r="132" fill="none" stroke="#F3E9D3" stroke-width="2"/>
+        <circle cx="150" cy="150" r="118" fill="none" stroke="#F3E9D3" stroke-width="1"/>
+        <path id="stampTop" d="M 40,150 A 110,110 0 0 1 260,150" fill="none"/>
+        <path id="stampBottom" d="M 260,150 A 110,110 0 0 1 40,150" fill="none"/>
+        <text font-family="Space Mono, monospace" font-size="13.5" letter-spacing="3.5" fill="#F3E9D3">
+          <textPath href="#stampTop" startOffset="50%" text-anchor="middle">EAGLE HEIGHTS BUTCHERY</textPath>
+        </text>
+        <text font-family="Space Mono, monospace" font-size="12" letter-spacing="3.5" fill="#C4922E">
+          <textPath href="#stampBottom" startOffset="50%" text-anchor="middle">TAMBORINE MOUNTAIN · QLD</textPath>
+        </text>
+        <g transform="translate(150,146)" stroke="#F3E9D3" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-46,20 C-46,-10 -30,-34 0,-34 C30,-34 46,-10 46,20" />
+          <path d="M-58,24 H58" />
+          <path d="M-34,-8 q10,-8 20,0" stroke="#C4922E"/>
+          <path d="M4,-8 q10,-8 20,0" stroke="#C4922E"/>
+        </g>
+        <text x="150" y="222" font-family="Fraunces, serif" font-style="italic" font-size="15" fill="#F3E9D3" text-anchor="middle">smoked on site, every week</text>
+      </svg>
+    </div>
+  </div>
+  <svg class="ridge" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,90 L0,55 L80,30 L150,50 L230,18 L300,42 L380,10 L460,46 L540,26 L620,52 L700,20 L790,48 L870,14 L950,44 L1030,24 L1110,50 L1200,30 L1200,90 Z" fill="#F3E9D3"/>
+    <g fill="#28371F" opacity="0.55">
+      <path d="M78,30 l6,-14 6,14 z"/>
+      <path d="M228,18 l6,-13 6,13 z"/>
+      <path d="M378,10 l6,-14 6,14 z"/>
+      <path d="M538,26 l6,-13 6,13 z"/>
+      <path d="M698,20 l6,-14 6,14 z"/>
+      <path d="M868,14 l6,-14 6,14 z"/>
+      <path d="M1028,24 l6,-13 6,13 z"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div>
+      <p class="eyebrow">The Mountain</p>
+      <h2 data-editable>Old Eagle Heights, at the top of the range.</h2>
+    </div>
+    <div class="body-col">
+      <p data-editable>Tamborine Mountain sits up in the rainforest-clad hinterland behind the Gold Coast, and Eagle Heights is its old heart — narrow lanes, the Gallery Walk, and shopfronts that have been trading since long before "artisan" was a word anyone needed. Eagle Heights Butchery has been one of them for around 26 years.</p>
+      <p data-editable>The shop sits in a small strip on Southport Avenue with easy-access parking right out front, next door to the FoodWorks. Locals drive up from as far as Loganholme for it, and visitors staying in the mountain's Airbnbs are pointed here for one reason: nothing here is mass-produced, and everything on the counter was made by someone who'll tell you exactly how to cook it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="smokehouse">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">In The Smokehouse</p>
+      <h2 data-editable>Cut, cured and smoked on the mountain.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <span class="tag">Signature</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 11c0-4 2.5-7 6-7s6 3 6 7"/><path d="M4 13h16c0 5-3 8-8 8s-8-3-8-8Z"/><path d="M9 13c0 2 1 3.5 3 3.5s3-1.5 3-3.5"/></svg>
+        <h3 data-editable>House-Smoked Hams &amp; Bacon</h3>
+        <p data-editable>Cured and smoked on the premises, including the whole leg hams locals order months ahead for Christmas — no shortcuts, no water injected.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c0-3 1.5-5 4-5h8c2.5 0 4 2 4 5s-1.5 5-4 5H8c-2.5 0-4-2-4-5Z"/><path d="M9 7v10M15 7v10"/></svg>
+        <h3 data-editable>Hand-Made Sausages</h3>
+        <p data-editable>Gourmet-style bangers made in-house — from pork &amp; fennel to Casalinga — plus schnitzels and other ready-to-cook favourites.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Thu–Sat</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6Z"/><circle cx="15" cy="12" r="1"/></svg>
+        <h3 data-editable>Fresh Seafood</h3>
+        <p data-editable>Fresh seafood lands in Thursday to Saturday — a mountain-town tradition worth planning your week around.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 3l4 4-11 11-5 1 1-5L17 3Z"/><path d="M14 6l4 4"/></svg>
+        <h3 data-editable>Everyday Cuts &amp; More</h3>
+        <p data-editable>Grass-fed, preservative-free meat cut to order for the everyday shop and hospitality orders alike, plus pet mince the dogs of the mountain seem to prefer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALLOUT ============ -->
+<section class="callout">
+  <div class="wrap">
+    <p class="eyebrow">Since the late 1990s</p>
+    <h2 data-editable>"Laurie and now Stewart will always look after you."</h2>
+    <p class="by" data-editable>— Janet H., customer of many years</p>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Word Around The Mountain</p>
+      <h2 data-editable>What the counter's regulars say.</h2>
+    </div>
+    <div class="review-grid">
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"The gentleman behind the counter was patient and knowledgeable, and gave me time and advice without pushing expensive cuts. The lamb curry was amazing."</p>
+        <div class="who"><span data-editable>Shirley</span><span data-editable>Local Guide</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"An amazing selection of preservative-free, grass-fed meats — well worth the drive if you love good food."</p>
+        <div class="who"><span data-editable>Sheck</span><span data-editable>Google review</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"Old fashioned service and a fastidiously clean shop with the scent of smoked meats. As far removed from the supermarket as you can get."</p>
+        <div class="who"><span data-editable>Missy M.</span><span data-editable>Local Guide</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"The best eye fillet steak in 57 years on this earth. We also grabbed the pork and fennel sausages — super awesome too."</p>
+        <div class="who"><span data-editable>Annie B.</span><span data-editable>Google review</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"We ordered catering and it was sensational — they really listened to what we were trying to achieve. Rare to find preservative-free bacon and ham."</p>
+        <div class="who"><span data-editable>Liam R.</span><span data-editable>Google review</span></div>
+      </div>
+      <div class="ticket">
+        <div class="stars">★★★★★</div>
+        <p class="quote" data-editable>"Staff are always super inviting, and we buy the pet mince here too — our parents make the trip up whenever they visit."</p>
+        <div class="who"><span data-editable>Jennifer M.</span><span data-editable>Local Guide</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="eyebrow">Hours On The Counter</p>
+      <h2 data-editable>When to catch us.</h2>
+      <table class="hours-table">
+        <tr><td data-editable>Monday – Friday</td><td data-editable>7:00am – 5:30pm</td></tr>
+        <tr><td data-editable>Saturday</td><td data-editable>7:00am – 1:00pm</td></tr>
+        <tr><td data-editable>Sunday</td><td data-editable>Closed</td></tr>
+        <tr><td data-editable>Fresh seafood</td><td data-editable>Thu, Fri &amp; Sat</td></tr>
+      </table>
+      <div class="note-box" data-editable>Hours can shift around public holidays and the Christmas ham rush — a quick call ahead never hurts, especially if you're after something specific.</div>
+    </div>
+    <div>
+      <p class="eyebrow">Find Us</p>
+      <h2 data-editable>Old Eagle Heights.</h2>
+      <ul class="info-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><span class="lbl">Address</span><span class="val" data-editable>Shop 5 / 17 Southport Avenue, Eagle Heights, Tamborine Mountain QLD 4271 — easy-access parking right out front, next to FoodWorks.</span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <div><span class="lbl">Shop</span><span class="val"><a href="tel:0755451811" data-editable>(07) 5545 1811</a></span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          <div><span class="lbl">Mobile</span><span class="val"><a href="tel:0421770946" data-editable>0421 770 946</a></span></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h4M6 14h12"/></svg>
+          <div><span class="lbl">Payment</span><span class="val" data-editable>Cash and EFT accepted</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="brand-text">Eagle Heights Butchery<span style="color:var(--brass); font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; display:block; margin-top:4px;">Old Eagle Heights, Tamborine Mountain</span></div>
+    <div class="fine" data-editable>Shop 5/17 Southport Ave, Eagle Heights QLD 4271 · (07) 5545 1811 · ABN 86 217 607 677</div>
+  </div>
+</footer>
+
+<!-- ============ EDIT MODE CONTROLS ============ -->
+<button id="editToggle" type="button" aria-pressed="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  Edit Page
+</button>
+<div id="editBanner">
+  <span>Editing on — click any text to change it</span>
+  <button id="editDone" type="button">Done</button>
+</div>
+
+<script>
+(function(){
+  var body = document.body;
+  var toggle = document.getElementById('editToggle');
+  var banner = document.getElementById('editBanner');
+  var doneBtn = document.getElementById('editDone');
+  var editables = document.querySelectorAll('[data-editable]');
+
+  function setEditing(on){
+    body.classList.toggle('editing', on);
+    toggle.classList.toggle('active', on);
+    toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+    banner.classList.toggle('show', on);
+    editables.forEach(function(el){
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+      el.spellcheck = false;
+    });
+    toggle.lastChild.textContent = on ? ' Editing…' : ' Edit Page';
+  }
+
+  toggle.addEventListener('click', function(){
+    setEditing(!body.classList.contains('editing'));
+  });
+  doneBtn.addEventListener('click', function(){ setEditing(false); });
+
+  setEditing(false);
+})();
+</script>
+
+</body>
+</html>
