@@ -72,10 +72,13 @@ h2.display{font-size:clamp(2.2rem,4.8vw,4.6rem)}
 .l-quiet{padding:.9em 1em;background:none;border:0;color:var(--mute);font:500 .68rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;text-decoration:underline;text-underline-offset:5px;cursor:pointer;transition:color .2s var(--ease)}
 .l-quiet:hover{color:var(--bone)}
 .l-hint{font-size:.85rem;font-style:italic;color:var(--mute)}
-.snd{display:grid;place-items:center;width:44px;height:44px;flex:none;background:none;border:1px solid var(--line);border-radius:50%;color:var(--gold);cursor:pointer;transition:transform .18s var(--ease),border-color .25s var(--ease)}
+.snd{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:44px;height:44px;padding:0 16px 0 14px;flex:none;background:none;border:1px solid var(--line);border-radius:50%;color:var(--gold);cursor:pointer;transition:transform .18s var(--ease),border-color .25s var(--ease)}
 .snd:active{transform:scale(.94)}
 @media (hover:hover){.snd:hover{border-color:var(--gold)}}
-.snd span{display:flex;align-items:flex-end;gap:2.5px;height:14px}
+.snd-b{position:relative;display:flex;align-items:flex-end;gap:2.5px;height:14px}
+.snd-b::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:1.5px;background:var(--bone);transform:rotate(-45deg);transition:transform .25s var(--ease)}
+.snd.on .snd-b::after{transform:rotate(-45deg) scaleX(0)}
+.snd-t{font:600 .66rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--bone)}
 .snd i{width:2px;height:100%;background:currentColor;transform:scaleY(.22);transform-origin:bottom;transition:transform .3s var(--ease)}
 .snd.on i{animation:eq .9s var(--ease) infinite alternate}
 .snd.on i:nth-child(2){animation-delay:-.3s}.snd.on i:nth-child(3){animation-delay:-.6s}.snd.on i:nth-child(4){animation-delay:-.15s}
@@ -330,6 +333,8 @@ h2.display{font-size:clamp(2.2rem,4.8vw,4.6rem)}
   .nav .btn{margin-top:2rem;min-height:54px}
   .hdr-book{display:inline-flex;min-height:42px;padding:0 1.1em;font-size:.72rem}
   .burger{display:grid}
+  .snd{width:44px;padding:0}
+  .snd-t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   .hdr-r{display:flex;align-items:center;gap:10px}
   .hero{padding-top:118px}
   .hero-grid,.about-grid,.svc-grid,.exp-grid,.visit-grid,.rev-top{grid-template-columns:1fr}
@@ -351,7 +356,7 @@ h2.display{font-size:clamp(2.2rem,4.8vw,4.6rem)}
   .foot-brand{grid-column:1/-1}
   .pole{width:3px}
 }
-@media (min-width:901px){.hdr-r{display:contents}}
+@media (min-width:901px){.hdr-r{display:contents}.nav{margin-left:auto}}
 @media (max-width:400px){.logo small{display:none}.logo-mark{width:36px;height:36px}.hdr-r{gap:7px}.snd,.burger{width:40px;height:40px}}
 @media (max-width:560px){
   .hero-foot .cue{display:none}
@@ -410,7 +415,7 @@ h2.display{font-size:clamp(2.2rem,4.8vw,4.6rem)}
       <a href="#visit" style="--i:4">Visit</a>
       <a class="btn" href="https://www.fresha.com/en-GB/a/timeless-barber-co-nerang-nerang-43-45-price-street-cx9e0nou?pId=535958" target="_blank" rel="noopener">Book on Fresha <svg aria-hidden="true"><use href="#arrow"/></svg></a>
     </nav>
-    <button class="snd" id="snd" type="button" aria-pressed="false" aria-label="Play music"><span aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>
+    <button class="snd" id="snd" type="button" aria-pressed="false" title="Play music"><span class="snd-b" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="snd-t">Music</span></button>
     <a class="btn hdr-book" href="https://www.fresha.com/en-GB/a/timeless-barber-co-nerang-nerang-43-45-price-street-cx9e0nou?pId=535958" target="_blank" rel="noopener">Book</a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
   </div>
@@ -664,7 +669,7 @@ $('#enter').addEventListener('click',()=>enter(true));$('#quiet').addEventListen
 /* looping soundtrack with soft fades */
 const au=$('#bgm'),snd=$('#snd');let want=false,fid=0;au.volume=0;
 const fadeTo=(v,ms)=>{const id=++fid,s=au.volume,t=performance.now(),f=n=>{if(id!==fid)return;const k=Math.min(1,(n-t)/ms);au.volume=Math.max(0,Math.min(1,s+(v-s)*k));if(k<1)requestAnimationFrame(f);else if(!want)au.pause()};requestAnimationFrame(f)};
-function setSound(on){want=on;snd.classList.toggle('on',on);snd.setAttribute('aria-pressed',String(on));snd.setAttribute('aria-label',on?'Mute music':'Play music');if(on)au.play().then(()=>fadeTo(.6,1600)).catch(()=>{want&&setSound(false)});else fadeTo(0,500)}
+function setSound(on){want=on;snd.classList.toggle('on',on);snd.setAttribute('aria-pressed',String(on));snd.title=on?'Mute music':'Play music';if(on)au.play().then(()=>fadeTo(.6,1600)).catch(()=>{want&&setSound(false)});else fadeTo(0,500)}
 snd.addEventListener('click',()=>setSound(!want));
 document.addEventListener('visibilitychange',()=>{if(document.hidden)au.pause();else if(want)au.play().catch(()=>{})});
 const tick=n=>{const k=Math.min(1,(n-t0)/T),e=1-Math.pow(1-k,3);lnum.textContent=String(Math.round(e*100)).padStart(3,'0');lbar.style.transform='scaleX('+e+')';k<1?requestAnimationFrame(tick):finish()};
